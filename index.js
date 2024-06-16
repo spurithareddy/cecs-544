@@ -7,7 +7,7 @@ async function saveHackerNewsArticles() {
   await page.goto("https://news.ycombinator.com/newest");
   await page.waitForSelector('.athing');
   const articles = await page.$$eval('.athing', nodes => {
-    return nodes.slice(0, 1000).map(node => {
+    return nodes.slice(0, 10).map(node => {
       const title = node.querySelector('.title a').innerText;
       const age = node.nextElementSibling.querySelector('.age a').innerText;
       return { title, age };
